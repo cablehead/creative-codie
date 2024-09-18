@@ -35,6 +35,17 @@ doc: |
   # `cli tools and discord bots`
   *[@ndyg](https://ndyg.co)*
 ---
+background:
+  src: ./robot.png
+  size: 32vh
+  position: "top 1em left 2em"
+v-stack:
+  - img:
+      src: ./authorize.png
+      width: 40%
+  - doc: |
+      [https://discord.com/oauth2/authorize?client_id=1285590630705397925&scope=bot&permissions=2048](https://discord.com/oauth2/authorize?client_id=1285590630705397925&scope=bot&permissions=2048)
+---
 title-hidden: Discord Gateway
 img:
   src: ./flow.svg
@@ -98,6 +109,8 @@ doc: |-
 ---
 title: tools used
 doc: |
-  - [websocat](https://github.com/vi/websocat)
-  - [Nushell](https://www.nushell.sh)
-  - [xs](https://github.com/cablehead/xs)
+    - [websocat](https://github.com/vi/websocat)
+    - [Nushell](https://www.nushell.sh)
+    - [xs](https://github.com/cablehead/xs)
+
+    slides created with: [revealjs](https://revealjs.com)
