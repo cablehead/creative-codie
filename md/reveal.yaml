@@ -1,0 +1,103 @@
+%YAML 1.2
+---
+description: cli tools and discord bots
+author: Andy Gayton
+outline: 📖 [Outline](https://github.com/cablehead/xs)
+theme: dracula
+option:
+  hash: true
+  slide number: c/t
+  pdf max pages per slide: 1
+style: |
+  .reveal .slide-number {
+      font-size: 24pt;
+      position: absolute;
+      right: 2em;
+      top: 1em;
+      color: #877b68;
+      background-color: transparent;
+  }
+  .left-align p {
+      text-align: left;
+  }
+  img {
+    border-radius: 10px;
+  }
+  .reveal pre code {
+    max-height: 80vh;
+  }
+---
+background:
+  src: ./robot.png
+  size: 32vh
+  position: "top 1em left 2em"
+doc: |
+  # `cli tools and discord bots`
+  *[@ndyg](https://ndyg.co)*
+---
+title-hidden: Discord Gateway
+img:
+  src: ./flow.svg
+  width: 90%
+  height: 90%
+sub:
+  - img:
+      src: ./opcodes.png
+      width: 90%
+      height: 90%
+---
+title-hidden: websocat
+doc: |-
+  ```
+           ┌────────────────────────────────────────┐
+           │            Discord Gateway             │
+           └────────────▲────────────┳──────────────┘
+                        ┃            ┃
+                        s            r
+                        e            e    op: 10 Hello
+    op: 02 Identify     n            c    op: 00 Ready
+    op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
+                        ┃            ┃
+               ┌────────┻────────────▼────────┐
+     ━━ stdin ━▶ $ websocat wss://gatewa...   ┣━ stdout ━▶
+               └──────────────────────────────┘
+  ```
+sub:
+- v-stack:
+  - img:
+      src: ./websocat.png
+      width: 70%
+      height: 70%
+  - doc: |
+      ```
+      op: 10 Hello
+      ```
+---
+title-hidden: websocat + xs
+doc: |-
+  ```
+            ┌────────────────────────────────────────┐
+            │            Discord Gateway             │
+            └────────────▲────────────┳──────────────┘
+                         ┃            ┃
+                         s            r
+                         e            e    op: 10 Hello
+     op: 02 Identify     n            c    op: 00 Ready
+     op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
+                         ┃            ┃
+                ┌────────┻────────────▼────────┐
+      ━━ stdin ━▶  $ websocat wss://gatewa...  ┣━ stdout ━▶
+               ▲└──────────────────────────────┘  │
+               │                                  │
+    discord.ws.send                      discord.ws.recv
+               │                                  │
+              ┌┴──────────────────────────────────▼─┐
+              │         $ xs serve ./store          │
+              └─────────────────────────────────────┘
+  ```
+---
+title: tools used
+doc: |
+  - [websocat](https://github.com/vi/websocat)
+  - [Nushell](https://www.nushell.sh)
+  - [xs](https://github.com/cablehead/xs)
