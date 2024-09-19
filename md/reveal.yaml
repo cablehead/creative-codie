@@ -59,11 +59,6 @@ img:
   src: ./flow.svg
   width: 90%
   height: 90%
-sub:
-  - img:
-      src: ./opcodes.png
-      width: 90%
-      height: 90%
 ---
 title-hidden: websocat
 doc: |-
@@ -91,29 +86,41 @@ sub:
       ```
       op: 10 Hello
       ```
+- img:
+    src: ./opcodes.png
+    width: 90%
+    height: 90%
 ---
 title-hidden: websocat + xs
-doc: |-
-  ```
-            ┌────────────────────────────────────────┐
-            │            Discord Gateway             │
-            └────────────▲────────────┳──────────────┘
-                         ┃            ┃
-                         s            r
-                         e            e    op: 10 Hello
-     op: 02 Identify     n            c    op: 00 Ready
-     op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
-                         ┃            ┃
-                ┌────────┻────────────▼────────┐
-      ━━ stdin ━▶  $ websocat wss://gatewa...  ┣━ stdout ━▶
-               ▲└──────────────────────────────┘  │
-               │                                  │
-    discord.ws.send                      discord.ws.recv
-               │                                  │
-              ┌┴──────────────────────────────────▼─┐
-              │         $ xs serve ./store          │
-              └─────────────────────────────────────┘
-  ```
+v-stack:
+  - doc: |-
+      ```
+                ┌────────────────────────────────────────┐
+                │            Discord Gateway             │
+                └────────────▲────────────┳──────────────┘
+                             ┃            ┃
+                             s            r
+                             e            e    op: 10 Hello
+         op: 02 Identify     n            c    op: 00 Ready
+         op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
+                             ┃            ┃
+                    ┌────────┻────────────▼────────┐
+          ━━ stdin ━▶  $ websocat wss://gatewa...  ┣━ stdout ━▶
+                   ▲└──────────────────────────────┘  │
+                   │                                  │
+        discord.ws.send                      discord.ws.recv
+                   │                                  │
+                  ┌┴──────────────────────────────────▼─┐
+                  │         $ xs serve ./store          │
+                  └─────────────────────────────────────┘
+      ```
+  - img:
+      src: ./ws.spawn.png
+---
+title: register heartbeat handler
+img:
+  src: ./register.heartbeat.png
+  width: 80%
 ---
 title: tools used
 v-stack:
