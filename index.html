@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>cli tools and discord bots</title>
+    <meta name="description" content="cli tools and discord bots">
+    <meta name="author" content="Andy Gayton">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/dracula.css" id="theme">
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" id="highlight-theme">
+    <style>
+        .chapter-header {
+            position: absolute;
+            top: 1em;
+            left: 1em;
+            font-size: 18pt;
+            opacity: 0.5;
+            display: none;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 1em;
+            left: 1em;
+            display: inline-block;
+        }
+
+        .footer > * {
+            opacity: 0.7;
+        }
+
+        .footer * {
+            vertical-align: middle;
+        }
+
+        .footer span {
+            font-size: 15pt;
+        }
+
+        .reveal figure {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            margin: 20px;
+        }
+
+        .reveal figcaption {
+            text-align: center;
+        }
+
+        .h-stack {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .h-stack-border {
+            border-left: 2px solid;
+        }
+
+        .v-stack > * {
+            display: block;
+        }
+
+        .v-stack-border {
+            border-top: 2px solid;
+        }
+
+        .reveal h1 {
+            font-size: 36pt;
+        }
+
+        .reveal h2 {
+            font-size: 30pt;
+        }
+
+        .reveal h3 {
+            font-size: 28pt;
+        }
+
+        .reveal h4 {
+            font-size: 24pt;
+        }
+
+        .reveal p, .reveal li, .reveal table, figcaption {
+            font-size: 20pt;
+        }
+
+        .reveal pre code, .reveal section img, #footer-left > a > img {
+            border: none;
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .reveal code {
+            color: white;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 5px;
+            border-color: #3F3F3F;
+            background: #3F3F3F;
+        }
+
+        .reveal pre code {
+            border-radius: 10px;
+        }
+
+        .img-pop {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .img-pop:hover {
+            opacity: 0.7;
+        }
+
+        /* The Modal (background) */
+        #modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+        #img-demo {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 100%;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 100%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Animation */
+        #img-demo, #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        #close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #close:hover, #close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            #img-demo {
+                width: 100%;
+            }
+        }
+
+        .reveal .slide-number {
+    font-size: 24pt;
+    position: absolute;
+    right: 2em;
+    top: 1em;
+    color: #877b68;
+    background-color: transparent;
+}
+.left-align p {
+    text-align: left;
+}
+img {
+  border-radius: 10px;
+}
+.reveal pre code {
+  max-height: 80vh;
+}
+
+    </style>
+</head>
+<body>
+<div style="display: none">
+    <div class="top-object">
+        
+    </div>
+</div>
+<div class="reveal">
+    <div class="slides">
+        <section>
+<section data-background="./robot.png" data-background-size="24vh" data-background-position="top 1em left 2em">
+<h1>cli tools and discord bots</h1>
+<div class="v-stack"><div><p><em><a href="https://ndyg.co">@ndyg</a></em></p>
+</div>
+<div><div class="h-stack">
+<img alt="" src="./overview.png" width="60%"/>
+</div>
+</div>
+<div><div class="h-stack">
+<img alt="" src="./roll.png" width="60%"/>
+</div>
+</div>
+</div>
+</section><section id="outline">
+<h1>📖 <a href="https://github.com/cablehead/xs">Outline</a></h1>
+<ul>
+<li><a href="#/1">authorize</a></li>
+<li><a href="#/2">Discord Gateway</a></li>
+<li><a href="#/3">websocat</a></li>
+<li><a href="#/4">websocat + xs</a></li>
+<li><a href="#/5">register heartbeat handler</a></li>
+<li><a href="#/6">tools used</a></li>
+</ul>
+</section>
+</section>
+<section>
+<section data-background="./robot.png" data-background-size="32vh" data-background-position="top 1em left 2em">
+<div class="v-stack"><div><div class="h-stack">
+<img alt="" src="./authorize.png" width="40%"/>
+</div>
+</div>
+<div><p><a href="https://discord.com/oauth2/authorize?client_id=1285590630705397925&amp;scope=bot&amp;permissions=2048">https://discord.com/oauth2/authorize?client_id=1285590630705397925&amp;scope=bot&amp;permissions=2048</a></p>
+</div>
+</div>
+</section></section>
+<section>
+<section>
+<div class="h-stack">
+<img alt="" src="./flow.svg" width="90%" height="90%"/>
+</div>
+</section></section>
+<section>
+<section>
+<pre><code>         ┌────────────────────────────────────────┐
+         │            Discord Gateway             │
+         └────────────▲────────────┳──────────────┘
+                      ┃            ┃
+                      s            r
+                      e            e    op: 10 Hello
+  op: 02 Identify     n            c    op: 00 Ready
+  op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
+                      ┃            ┃
+             ┌────────┻────────────▼────────┐
+   ━━ stdin ━▶ $ websocat wss://gatewa...   ┣━ stdout ━▶
+             └──────────────────────────────┘
+</code></pre>
+</section><section>
+<div class="v-stack"><div><div class="h-stack">
+<img alt="" src="./websocat.png" width="70%" height="70%"/>
+</div>
+</div>
+<div><pre><code>op: 10 Hello
+</code></pre>
+</div>
+</div>
+</section>
+<section>
+<div class="h-stack">
+<img alt="" src="./opcodes.png" width="90%" height="90%"/>
+</div>
+</section>
+</section>
+<section>
+<section>
+<div class="v-stack"><div><pre><code>          ┌────────────────────────────────────────┐
+          │            Discord Gateway             │
+          └────────────▲────────────┳──────────────┘
+                       ┃            ┃
+                       s            r
+                       e            e    op: 10 Hello
+   op: 02 Identify     n            c    op: 00 Ready
+   op: 01 Heartbeat    d            v    op: 11 Heartbeat ACK
+                       ┃            ┃
+              ┌────────┻────────────▼────────┐
+    ━━ stdin ━▶  $ websocat wss://gatewa...  ┣━ stdout ━▶
+             ▲└──────────────────────────────┘  │
+             │                                  │
+  discord.ws.send                      discord.ws.recv
+             │                                  │
+            ┌┴──────────────────────────────────▼─┐
+            │         $ xs serve ./store          │
+            └─────────────────────────────────────┘
+</code></pre>
+</div>
+<div><div class="h-stack">
+<img alt="" src="./ws.spawn.png"/>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section>
+<h1>register heartbeat handler</h1>
+<div class="h-stack">
+<img alt="" src="./register.heartbeat.png" width="80%"/>
+</div>
+</section></section>
+<section>
+<section>
+<h1>tools used</h1>
+<div class="v-stack"><div><div class="h-stack"><div style="width:50.0000%"><div class="h-stack">
+<img alt="" src="./tools.png" width="100%"/>
+</div>
+</div>
+<div style="width:50.0000%"><div class="v-stack"><div><ul>
+<li><a href="https://github.com/vi/websocat">websocat</a></li>
+<li><a href="https://www.nushell.sh">Nushell</a></li>
+<li><a href="https://github.com/cablehead/xs">xs</a></li>
+</ul>
+</div>
+<div><div class="h-stack">
+<img alt="" src="./roll.png" width="100%"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><div class="h-stack"><div style="width:50.0000%"><p>slides created with</p>
+</div>
+<div style="width:50.0000%"><ul>
+<li><a href="https://revealjs.com">reveal.js</a></li>
+<li><a href="https://github.com/KmolYuan/reveal-yaml-rs">reveal-yaml.rs</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+
+    </div>
+</div>
+<div id="modal">
+    <span id="close">&times;</span>
+    <img src="" alt="demo image" id="img-demo">
+    <div id="caption"></div>
+</div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/search/search.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/math/math.js"></script>
+<script src="plugin/zoom/zoom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+
+<script>
+    function show_modal(a) {
+        $("#modal").css("display", "block");
+        $("#img-demo").attr("src", a.src);
+        $("#caption").html(a.alt);
+        Reveal.configure({keyboard: {27: close_modal}});
+    }
+
+    function close_modal() {
+        $("#modal").css("display", "none");
+        Reveal.configure({keyboard: {27: "toggleOverview"}});
+    }
+
+    Reveal.initialize({
+        slideNumber: "c/t",
+        hash: true,
+        pdfMaxPagesPerSlide: 1,
+        plugins: [RevealNotes, RevealSearch, RevealHighlight, RevealMath.MathJax2, RevealZoom, ],
+        mathjax2: {
+            mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+            config: 'TeX-AMS_HTML-full',
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)', '\\[', '\\]']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        }
+    }).then(() => {
+        // Pinned objects
+        if (window.location.search.match(/print-pdf/gi)) {
+            $('div.slide-background').append($('.top-object'));
+            setTimeout(function () {
+                $('div.pdf-page').each((_, e) => $(e).find('.slide-background').append($(e).find('.chapter-header').show()));
+            }, 1000);
+        } else {
+            let top = $('div.reveal');
+            top.append($('.top-object'));
+            top.append($(Reveal.getCurrentSlide()).children('.chapter-header').show());
+            Reveal.on('slidechanged', e => {
+                $(e.previousSlide).append(top.children('.chapter-header').hide());
+                top.append($(e.currentSlide).children('.chapter-header').show());
+            });
+            // Close button
+            $("#close").click(close_modal);
+            
+        }
+        // Open external links in new windows or tabs
+        $('a').filter('[href^="http"], [href^="//"]')
+            .not('[href*="' + window.location.host + '"]')
+            .attr('rel', "noopener noreferrer")
+            .attr('target', '_blank');
+    });
+</script>
+</body>
+</html>
