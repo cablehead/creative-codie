@@ -1,3 +1,5 @@
+[![screenshot](./screenshot.png)](https://cablehead.github.io/creative-codie/)
+
 These are the [slides](https://cablehead.github.io/creative-codie/) from a demo of [`xs`](https://github.com/cablehead/xs) I
 gave at the [Creative Code](https://www.meetup.com/creative-code-toronto/?eventOrigin=event_home_page) meetup on [September 18,
 2024](https://www.meetup.com/creative-code-toronto/events/303276625/) in
